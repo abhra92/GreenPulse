@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Trees, Car } from 'lucide-react';
+import { calculateSimulatorSavings } from '../utils/calculations.js';
 
 export default function Simulator() {
   const [results, setResults] = useState(null);
@@ -45,29 +46,21 @@ export default function Simulator() {
   const showRecycleOption = formData.recyclingHabit !== 'full';
 
   // Calculate simulated savings (kg CO2 per year)
-  let carFactor = 0;
-  if (formData.carType === 'gas') carFactor = 0.251;
-  else if (formData.carType === 'electric') carFactor = 0.068;
-  const driveSaved = driveReduction * 52 * carFactor;
-
-  // Replaced meat meals: beef produces roughly 6.5kg CO2, veg produces 1.5kg.
-  // Savings is ~5.0kg per meal replaced. Let's use 4.0kg as a conservative estimate.
-  const foodSaved = vegetarianMeals * 52 * 4.0;
-
-  const acSaved = acReduction * 365 * 0.5; // 0.5 kg per hour
-
-  let recycleSaved = 0;
-  if (upgradeRecycling) {
-    if (formData.recyclingHabit === 'none') recycleSaved = 300;
-    else if (formData.recyclingHabit === 'partial') recycleSaved = 150;
-  }
-
-  const totalSaved = Math.round(driveSaved + foodSaved + acSaved + recycleSaved);
-  const monthlySaved = Math.round(totalSaved / 12);
-
-  // Equivalent impact
-  const treeEquivalent = Math.round(totalSaved / 22); // average tree absorbs 22kg CO2/year
-  const gasKmEquivalent = Math.round(totalSaved / 0.251); // average car 0.251kg/km
+  const {
+    driveSaved,
+    foodSaved,
+    acSaved,
+    recycleSaved,
+    totalSaved,
+    monthlySaved,
+    treeEquivalent,
+    gasKmEquivalent,
+  } = calculateSimulatorSavings(formData, {
+    driveReduction,
+    vegetarianMeals,
+    acReduction,
+    upgradeRecycling,
+  });
 
   // New Score calculation
   const newCO2 = Math.max(800, initialCO2 - totalSaved);

@@ -10,7 +10,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "start": "node server.mjs",
+    "test": "vitest run",
     "astro": "astro"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.0"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.7",

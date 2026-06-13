@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { calculateResults } from '../utils/calculations.js';
 
 export default function AssessmentForm() {
   const [step, setStep] = useState(1);
@@ -39,77 +40,9 @@ export default function AssessmentForm() {
   const nextStep = () => setStep((s) => Math.min(s + 1, 5));
   const prevStep = () => setStep((s) => Math.max(s - 1, 1));
 
-  const calculateResults = () => {
-    // 1. Transportation
-    let carFactor = 0;
-    if (formData.carType === 'gas') carFactor = 0.404;
-    else if (formData.carType === 'electric') carFactor = 0.110;
-    const carEmissions = formData.carMiles * 52 * carFactor;
-    const transitEmissions = formData.publicTransitMiles * 52 * 0.140;
-    const flightEmissions = formData.flightHours * 90;
-    const transportTotal = carEmissions + transitEmissions + flightEmissions;
-
-    // 2. Home Energy
-    const electricEmissions = formData.electricBill * 12 * 0.0009; // 0.9 kg CO2 per ₹ (Indian grid)
-    const acEmissions = formData.acHours * 365 * 0.5; // 0.5 kg CO2 per hour
-    let applianceEmissions = 300;
-    if (formData.appliancesRate === 'eco') applianceEmissions = 150;
-    else if (formData.appliancesRate === 'heavy') applianceEmissions = 600;
-    const energyTotal = electricEmissions + acEmissions + applianceEmissions;
-
-    // 3. Food
-    let dietBase = 2500; // mixed
-    if (formData.dietType === 'vegetarian') dietBase = 1500;
-    else if (formData.dietType === 'nonVeg') dietBase = 3500;
-    // Organic discount
-    const organicDiscount = (formData.organicRatio / 100) * 300;
-    const foodTotal = Math.max(1200, dietBase - organicDiscount);
-
-    // 4. Shopping
-    const clothingEmissions = formData.clothingSpend * 12 * 0.4;
-    const electronicsEmissions = formData.electronicsSpend * 12 * 0.8;
-    const goodsEmissions = formData.consumerGoodsSpend * 12 * 0.3;
-    const shoppingTotal = clothingEmissions + electronicsEmissions + goodsEmissions;
-
-    // 5. Waste
-    let recyclingFactor = 200;
-    if (formData.recyclingHabit === 'full') recyclingFactor = 50;
-    else if (formData.recyclingHabit === 'none') recyclingFactor = 350;
-
-    let plasticFactor = 100;
-    if (formData.plasticUsage === 'low') plasticFactor = 20;
-    else if (formData.plasticUsage === 'high') plasticFactor = 250;
-
-    const wasteSegregationCredit = formData.wasteSegregation ? -50 : 0;
-    const wasteTotal = Math.max(30, recyclingFactor + plasticFactor + wasteSegregationCredit);
-
-    // Totals
-    const totalCO2 = transportTotal + energyTotal + foodTotal + shoppingTotal + wasteTotal;
-
-    // Score: 100 is best, 0 is worst. Let's make 4000kg the "perfect" baseline (Score 95)
-    // and 20000kg a "poor" baseline (Score 20).
-    let score = Math.round(100 - (totalCO2 / 220));
-    if (score < 10) score = 10;
-    if (score > 99) score = 99;
-
-    return {
-      score,
-      totalCO2: Math.round(totalCO2),
-      breakdown: {
-        transport: Math.round(transportTotal),
-        energy: Math.round(energyTotal),
-        food: Math.round(foodTotal),
-        shopping: Math.round(shoppingTotal),
-        waste: Math.round(wasteTotal),
-      },
-      formData,
-      timestamp: new Date().toISOString(),
-    };
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const results = calculateResults();
+    const results = calculateResults(formData);
     localStorage.setItem('greeplus_footprint', JSON.stringify(results));
     
     // Seed initial daily challenge progress or active streak if not present

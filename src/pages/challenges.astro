@@ -1,0 +1,27 @@
+---
+// src/pages/challenges.astro
+import Layout from '../layouts/Layout.astro';
+import ChallengesComponent from '../components/Challenges.jsx';
+---
+
+<Layout 
+  title="Daily Eco Challenges – GreePlus AI" 
+  description="Participate in gamified daily challenges such as cycling, reusing bottles, avoiding plastic bags, and saving energy to earn XP and ranks."
+>
+  <div class="bg-canvas py-12">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mb-10">
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">Gamified Engagement</span>
+        <h1 class="font-display text-4xl font-normal text-ink mt-2 leading-tight">
+          Daily Eco Challenges
+        </h1>
+        <p class="text-slate mt-2">
+          Complete daily sustainability challenges to earn experience points (XP), boost your streak points, and unlock rank status badges.
+        </p>
+      </div>
+
+      <!-- Challenges React Island -->
+      <ChallengesComponent client:load />
+    </div>
+  </div>
+</Layout>

@@ -1,23 +1,54 @@
+---
+// Layout.astro
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SunsetStripe from '../components/SunsetStripe.astro';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+  title = "GreePlus AI – Carbon Footprint Awareness Platform", 
+  description = "Understand, monitor, and reduce your carbon footprint with AI-powered personalized sustainability coaching, impact simulator, and eco challenges."
+} = Astro.props;
+---
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		
+		<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		
+		<!-- Google Fonts for premium typography -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 	</head>
-	<body>
-		<slot />
+	<body class="min-h-screen flex flex-col bg-canvas text-ink">
+		<!-- Main Header -->
+		<Header />
+		
+		<!-- Main Page Content -->
+		<main class="flex-grow">
+			<slot />
+		</main>
+		
+		<!-- Signature Sunset Stripe Band -->
+		<SunsetStripe />
+		
+		<!-- Main Footer -->
+		<Footer />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

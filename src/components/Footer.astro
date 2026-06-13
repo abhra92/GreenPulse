@@ -1,0 +1,89 @@
+---
+// Footer.astro
+---
+<footer class="w-full bg-footer-cream border-t border-beige-deep text-ink">
+  <div class="mx-auto max-w-7xl px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+      
+      <!-- Brand column -->
+      <div class="lg:col-span-2 flex flex-col gap-4">
+        <a href="/" class="group">
+          <span class="font-display text-2xl font-bold tracking-tight text-primary transition-colors group-hover:text-primary-deep">
+            GreePlus <span class="font-mono font-medium text-ink">AI_</span>
+          </span>
+        </a>
+        <p class="text-sm text-slate leading-relaxed max-w-sm">
+          Empowering individuals and campuses to measure, simulate, and reduce their carbon footprint through Generative AI coaching, analytics, and gamified challenges.
+        </p>
+        <div class="flex gap-4 mt-2">
+          <!-- Mock Social Icons -->
+          <a href="#" class="text-slate hover:text-primary transition-colors" aria-label="Twitter">
+            <svg class="size-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="text-slate hover:text-primary transition-colors" aria-label="GitHub">
+            <svg class="size-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.167 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.577.688.479C19.138 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Links column 1 -->
+      <div class="flex flex-col gap-3">
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-stone">Toolbox</h3>
+        <ul class="flex flex-col gap-2">
+          <li><a href="/assess" class="text-sm text-primary hover:underline transition-all">Carbon Calculator</a></li>
+          <li><a href="/coach" class="text-sm text-primary hover:underline transition-all">AI Coach</a></li>
+          <li><a href="/simulator" class="text-sm text-primary hover:underline transition-all">Impact Simulator</a></li>
+          <li><a href="/challenges" class="text-sm text-primary hover:underline transition-all">Daily Challenges</a></li>
+        </ul>
+      </div>
+
+      <!-- Links column 2 -->
+      <div class="flex flex-col gap-3">
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-stone">Community</h3>
+        <ul class="flex flex-col gap-2">
+          <li><a href="/leaderboard" class="text-sm text-primary hover:underline transition-all">Friends Leaderboard</a></li>
+          <li><a href="/leaderboard" class="text-sm text-primary hover:underline transition-all">Department Rankings</a></li>
+          <li><a href="#" class="text-sm text-primary hover:underline transition-all">Active Challenges</a></li>
+          <li><a href="#" class="text-sm text-primary hover:underline transition-all">Sponsors</a></li>
+        </ul>
+      </div>
+
+      <!-- Links column 3 -->
+      <div class="flex flex-col gap-3">
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-stone">Resources</h3>
+        <ul class="flex flex-col gap-2">
+          <li><a href="#" class="text-sm text-primary hover:underline transition-all">Sustainability Docs</a></li>
+          <li><a href="#" class="text-sm text-primary hover:underline transition-all">Vercel Deployment</a></li>
+          <li><a href="#" class="text-sm text-primary hover:underline transition-all">Firebase Guide</a></li>
+          <li><a href="#" class="text-sm text-primary hover:underline transition-all">GitHub Repo</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <hr class="border-beige-deep my-12" />
+
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-slate">
+      <div>
+        &copy; {new Date().getFullYear()} GreePlus AI. All rights reserved.
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-ink transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-ink transition-colors">Terms of Service</a>
+        
+        <!-- Language Selector -->
+        <div class="relative inline-block text-left">
+          <select 
+            class="bg-canvas border border-hairline-strong text-ink text-xs rounded-md px-3 py-1 h-8 focus:border-primary focus:ring-0 cursor-pointer"
+            aria-label="Select language"
+          >
+            <option selected>English (US)</option>
+            <option>Español</option>
+            <option>Français</option>
+            <option>Deutsch</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

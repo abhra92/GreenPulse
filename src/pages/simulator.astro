@@ -1,0 +1,27 @@
+---
+// src/pages/simulator.astro
+import Layout from '../layouts/Layout.astro';
+import SimulatorComponent from '../components/Simulator.jsx';
+---
+
+<Layout 
+  title="Carbon Impact Simulator – GreePlus AI" 
+  description="Model lifestyle changes before implementing them. Simulate reducing car mileage, changing diets, saving electricity, and improving recycling."
+>
+  <div class="bg-canvas py-12">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mb-10">
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">Simulation Sandbox</span>
+        <h1 class="font-display text-4xl font-normal text-ink mt-2 leading-tight">
+          Carbon Impact Simulator
+        </h1>
+        <p class="text-slate mt-2">
+          Adjust sliders to test how specific daily behavior shifts alter your annual carbon footprint, tree absorption equivalents, and overall Carbon Score.
+        </p>
+      </div>
+
+      <!-- Simulator React Island -->
+      <SimulatorComponent client:load />
+    </div>
+  </div>
+</Layout>

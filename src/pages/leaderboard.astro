@@ -1,0 +1,27 @@
+---
+// src/pages/leaderboard.astro
+import Layout from '../layouts/Layout.astro';
+import LeaderboardComponent from '../components/Leaderboard.jsx';
+---
+
+<Layout 
+  title="Community Leaderboard – GreePlus AI" 
+  description="Compare rankings against friends, check department-level averages, and contribute to campus-wide community challenges."
+>
+  <div class="bg-canvas py-12">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mb-10">
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">Standings</span>
+        <h1 class="font-display text-4xl font-normal text-ink mt-2 leading-tight">
+          Community Standings & Leaderboard
+        </h1>
+        <p class="text-slate mt-2">
+          Compare your carbon score against friends, monitor rankings between college departments, or join community sustainability actions.
+        </p>
+      </div>
+
+      <!-- Leaderboard React Island -->
+      <LeaderboardComponent client:load />
+    </div>
+  </div>
+</Layout>

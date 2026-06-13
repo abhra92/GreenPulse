@@ -1,0 +1,27 @@
+---
+// src/pages/dashboard.astro
+import Layout from '../layouts/Layout.astro';
+import DashboardComponent from '../components/Dashboard.jsx';
+---
+
+<Layout 
+  title="Analytics Dashboard – GreePlus AI" 
+  description="View your Carbon Score, annual emissions details, level achievements, active streaks, and comparative benchmarks."
+>
+  <div class="bg-canvas py-12">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mb-10">
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">Overview</span>
+        <h1 class="font-display text-4xl font-normal text-ink mt-2 leading-tight">
+          Your Sustainability Hub
+        </h1>
+        <p class="text-slate mt-2">
+          Track emissions data, check your streak points, and review unlocked achievement badges.
+        </p>
+      </div>
+
+      <!-- Dashboard React Island -->
+      <DashboardComponent client:load />
+    </div>
+  </div>
+</Layout>

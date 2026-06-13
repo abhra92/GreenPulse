@@ -1,0 +1,27 @@
+---
+// src/pages/assess.astro
+import Layout from '../layouts/Layout.astro';
+import AssessmentForm from '../components/AssessmentForm.jsx';
+---
+
+<Layout 
+  title="Carbon Assessment – GreePlus AI" 
+  description="Assess your environmental footprint across transportation, home energy, food diet, shopping, and waste management."
+>
+  <div class="bg-canvas py-16">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">Assessment</span>
+        <h1 class="font-display text-4xl font-normal text-ink mt-2 leading-tight">
+          Analyze your footprint
+        </h1>
+        <p class="text-slate mt-2">
+          Fill out the 5-step calculator. We'll compute your annual CO₂ impact and generate your custom sustainability dashboard.
+        </p>
+      </div>
+
+      <!-- Assessment Form Island -->
+      <AssessmentForm client:load />
+    </div>
+  </div>
+</Layout>

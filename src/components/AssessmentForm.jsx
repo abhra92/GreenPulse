@@ -10,7 +10,7 @@ export default function AssessmentForm() {
     flightHours: 5,
     
     // Step 2: Home Energy
-    electricBill: 80,
+    electricBill: 3000, // monthly ₹
     acHours: 4,
     appliancesRate: 'standard', // eco, standard, heavy
     
@@ -19,9 +19,9 @@ export default function AssessmentForm() {
     organicRatio: 30, // percentage
     
     // Step 4: Shopping & Consumption
-    clothingSpend: 50, // monthly $
-    electronicsSpend: 30, // monthly $
-    consumerGoodsSpend: 100, // monthly $
+    clothingSpend: 2000, // monthly ₹
+    electronicsSpend: 1500, // monthly ₹
+    consumerGoodsSpend: 5000, // monthly ₹
     
     // Step 5: Waste Management
     recyclingHabit: 'partial', // full, partial, none
@@ -50,7 +50,7 @@ export default function AssessmentForm() {
     const transportTotal = carEmissions + transitEmissions + flightEmissions;
 
     // 2. Home Energy
-    const electricEmissions = formData.electricBill * 12 * 0.7; // 0.7 kg CO2 per dollar
+    const electricEmissions = formData.electricBill * 12 * 0.0009; // 0.9 kg CO2 per ₹ (Indian grid)
     const acEmissions = formData.acHours * 365 * 0.5; // 0.5 kg CO2 per hour
     let applianceEmissions = 300;
     if (formData.appliancesRate === 'eco') applianceEmissions = 150;
@@ -220,12 +220,12 @@ export default function AssessmentForm() {
             <h3 className="text-lg font-semibold text-ink">Home Energy Usage</h3>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="electricBill" className="text-sm font-medium text-slate">Monthly Electric Bill ($)</label>
+              <label htmlFor="electricBill" className="text-sm font-medium text-slate">Monthly Electric Bill (₹)</label>
               <input
                 id="electricBill"
                 type="number"
                 min="0"
-                max="1000"
+                max="50000"
                 value={formData.electricBill}
                 onChange={(e) => handleInputChange('electricBill', parseInt(e.target.value) || 0)}
               />
@@ -304,36 +304,36 @@ export default function AssessmentForm() {
             <h3 className="text-lg font-semibold text-ink">Shopping & Consumption</h3>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="clothingSpend" className="text-sm font-medium text-slate">Monthly Clothing & Fashion Budget ($)</label>
+              <label htmlFor="clothingSpend" className="text-sm font-medium text-slate">Monthly Clothing & Fashion Budget (₹)</label>
               <input
                 id="clothingSpend"
                 type="number"
                 min="0"
-                max="2000"
+                max="50000"
                 value={formData.clothingSpend}
                 onChange={(e) => handleInputChange('clothingSpend', parseInt(e.target.value) || 0)}
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="electronicsSpend" className="text-sm font-medium text-slate">Monthly Electronics Budget ($)</label>
+              <label htmlFor="electronicsSpend" className="text-sm font-medium text-slate">Monthly Electronics Budget (₹)</label>
               <input
                 id="electronicsSpend"
                 type="number"
                 min="0"
-                max="2000"
+                max="50000"
                 value={formData.electronicsSpend}
                 onChange={(e) => handleInputChange('electronicsSpend', parseInt(e.target.value) || 0)}
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="consumerGoodsSpend" className="text-sm font-medium text-slate">Monthly General Consumer Goods ($)</label>
+              <label htmlFor="consumerGoodsSpend" className="text-sm font-medium text-slate">Monthly General Consumer Goods (₹)</label>
               <input
                 id="consumerGoodsSpend"
                 type="number"
                 min="0"
-                max="2000"
+                max="100000"
                 value={formData.consumerGoodsSpend}
                 onChange={(e) => handleInputChange('consumerGoodsSpend', parseInt(e.target.value) || 0)}
               />

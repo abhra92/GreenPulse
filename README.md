@@ -1,46 +1,288 @@
-# Astro Starter Kit: Basics
+# GreePlus AI – AI-Powered Carbon Footprint Awareness Platform
 
-```sh
-npm create astro@latest -- --template basics
-```
+## Project Vision
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+GreePlus AI helps individuals understand, monitor, and reduce their environmental impact through personalized carbon footprint analysis, AI-generated sustainability guidance, behavioral tracking, and gamified engagement.
 
-## 🚀 Project Structure
+Unlike traditional carbon calculators that only provide static estimates, GreePlus AI transforms environmental awareness into measurable action by delivering personalized recommendations and long-term progress tracking.
 
-Inside of your Astro project, you'll see the following folders and files:
+Built with Astro's modern Islands Architecture, the platform delivers fast performance, reduced JavaScript payloads, and an accessible user experience across devices.
+
+## Problem Statement
+
+Many people want to adopt sustainable lifestyles but face three major challenges:
+
+* Lack of awareness about which daily activities generate the most emissions.
+* Difficulty understanding how lifestyle choices affect environmental impact.
+* Limited guidance on which changes will produce meaningful carbon reductions.
+
+Most existing solutions stop at reporting a carbon score and fail to provide actionable, personalized recommendations.
+
+## Proposed Solution
+
+GreePlus AI combines carbon accounting, behavioral analytics, and generative AI to help users:
+
+* Calculate their carbon footprint.
+* Identify major emission sources.
+* Receive AI-generated sustainability recommendations.
+* Track eco-friendly habits over time.
+* Simulate the environmental impact of lifestyle changes.
+* Earn rewards through sustainability challenges.
+* Monitor progress through visual dashboards.
+
+## Core Features
+
+### Carbon Footprint Assessment
+
+The platform evaluates emissions across:
+
+#### Transportation
+
+* Personal vehicle usage
+* Public transportation
+* Air travel
+* Walking and cycling habits
+
+#### Home Energy Consumption
+
+* Electricity usage
+* Air conditioning usage
+* Appliance consumption
+
+#### Food & Lifestyle
+
+* Vegetarian diet
+* Mixed diet
+* Non-vegetarian diet
+
+#### Shopping & Consumption
+
+* Clothing purchases
+* Electronic purchases
+* Consumer goods spending
+
+#### Waste Management
+
+* Recycling habits
+* Plastic usage
+* Waste segregation practices
+
+The system calculates annual estimated emissions and generates a Carbon Score.
+
+## AI Sustainability Coach
+
+Powered by Google Gemini, the recommendation engine analyzes user behavior and provides actionable guidance.
+
+### Example
+
+Instead of:
+
+"Use less electricity."
+
+The system generates:
+
+"Transportation accounts for 52% of your annual emissions. Replacing two weekly car trips with public transport could reduce approximately 110 kg CO₂ annually."
+
+Recommendations are personalized, measurable, and prioritized by expected impact.
+
+## Carbon Impact Simulator
+
+Users can model lifestyle changes before implementing them.
+
+### Example Query
+
+"What happens if I stop driving twice per week?"
+
+### Generated Insights
+
+* Monthly CO₂ reduction
+* Annual CO₂ reduction
+* Equivalent environmental impact
+* Estimated sustainability score improvement
+
+This feature helps users understand the value of specific behavioral changes.
+
+## Daily Eco Challenges
+
+Users receive sustainability-focused challenges such as:
+
+* Walk or cycle to college
+* Use a reusable water bottle
+* Avoid single-use plastics
+* Reduce unnecessary electricity usage
+* Plant and maintain trees
+
+Challenge completion earns experience points and sustainability rewards.
+
+## Analytics Dashboard
+
+Interactive visualizations include:
+
+* Carbon Score
+* Emission breakdown by category
+* Monthly trends
+* Reduction history
+* Challenge completion statistics
+* Sustainability streak tracking
+
+## Gamification System
+
+### Progress Levels
+
+1. Eco Beginner
+2. Eco Explorer
+3. Eco Warrior
+4. Eco Champion
+
+### Achievement Badges
+
+* 7-Day Sustainability Streak
+* 30-Day Sustainability Streak
+* Tree Planter
+* Plastic-Free Week
+* Sustainability Champion
+
+Gamification increases engagement and encourages long-term behavioral change.
+
+## Community Engagement
+
+Users can compare progress through:
+
+* Friends Leaderboards
+* College Department Rankings
+* Community Sustainability Challenges
+
+This social layer promotes accountability and healthy competition.
+
+## Technical Architecture
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+Users
+  │
+  ▼
+Astro Frontend
+  │
+  ▼
+Astro API Routes
+  │
+  ├── MongoDB Atlas
+  │
+  ├── Firebase Authentication
+  │
+  └── Google Gemini API
+          │
+          ▼
+AI Sustainability Recommendation Engine
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Technology Stack
 
-## 🧞 Commands
+### Frontend
 
-All commands are run from the root of the project, from a terminal:
+* Astro.js
+* React Components (Astro Islands)
+* Tailwind CSS
+* Shadcn/UI
+* Recharts
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### Backend
 
-## 👀 Want to learn more?
+* Astro API Routes
+* Node.js
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Database
+
+* MongoDB Atlas
+
+### Authentication
+
+* Firebase Authentication
+
+### Artificial Intelligence
+
+* Google Gemini API
+
+### Deployment
+
+* Vercel
+
+### Development Tools
+
+* TypeScript
+* ESLint
+* Prettier
+* GitHub
+
+## Security & Reliability
+
+* Input validation and sanitization
+* API rate limiting
+* Secure environment variable management
+* Protected authentication workflows
+* Prompt injection mitigation strategies
+* Secure API communication and data handling
+
+## Accessibility & Inclusive Design
+
+The platform follows modern accessibility standards:
+
+* Keyboard navigation support
+* Responsive mobile-first design
+* Semantic HTML structure
+* Screen reader compatibility
+* ARIA-compliant interfaces
+* Dark mode support
+
+## Testing Strategy
+
+### Unit Testing
+
+* Carbon calculation engine
+* Recommendation logic
+* Gamification system
+
+### API Testing
+
+* Authentication APIs
+* Carbon footprint APIs
+* Dashboard APIs
+
+### UI Testing
+
+* Form validation
+* Dashboard rendering
+* Accessibility compliance
+
+## Future Roadmap
+
+### AI Receipt Scanner
+
+Analyze shopping receipts and estimate carbon impact automatically.
+
+### Green Route Optimizer
+
+Recommend lower-emission transportation routes.
+
+### Smart Sustainability Notifications
+
+Send personalized reminders and progress updates.
+
+### Carbon Offset Marketplace
+
+Connect users with verified environmental initiatives.
+
+### Conversational Sustainability Assistant
+
+Provide real-time sustainability education through AI chat.
+
+## Expected Impact
+
+GreePlus AI empowers users to:
+
+* Understand their environmental footprint.
+* Make data-driven sustainability decisions.
+* Develop long-term eco-friendly habits.
+* Track measurable carbon reductions.
+* Contribute to broader environmental awareness.
+
+The platform transforms sustainability from a one-time calculation into a continuous, engaging, and measurable journey.

@@ -5,7 +5,7 @@ export default function Simulator() {
   const [results, setResults] = useState(null);
   
   // Simulation variables
-  const [driveReduction, setDriveReduction] = useState(0); // miles reduced per week
+  const [driveReduction, setDriveReduction] = useState(0); // km reduced per week
   const [vegetarianMeals, setVegetarianMeals] = useState(0); // meatless meals replaced per week
   const [acReduction, setAcReduction] = useState(0); // AC hours reduced per day
   const [upgradeRecycling, setUpgradeRecycling] = useState(false); // Upgrade to full recycling
@@ -46,8 +46,8 @@ export default function Simulator() {
 
   // Calculate simulated savings (kg CO2 per year)
   let carFactor = 0;
-  if (formData.carType === 'gas') carFactor = 0.404;
-  else if (formData.carType === 'electric') carFactor = 0.110;
+  if (formData.carType === 'gas') carFactor = 0.251;
+  else if (formData.carType === 'electric') carFactor = 0.068;
   const driveSaved = driveReduction * 52 * carFactor;
 
   // Replaced meat meals: beef produces roughly 6.5kg CO2, veg produces 1.5kg.
@@ -67,7 +67,7 @@ export default function Simulator() {
 
   // Equivalent impact
   const treeEquivalent = Math.round(totalSaved / 22); // average tree absorbs 22kg CO2/year
-  const gasMilesEquivalent = Math.round(totalSaved / 0.404); // average car 0.404kg/mile
+  const gasKmEquivalent = Math.round(totalSaved / 0.251); // average car 0.251kg/km
 
   // New Score calculation
   const newCO2 = Math.max(800, initialCO2 - totalSaved);
@@ -92,7 +92,7 @@ export default function Simulator() {
               <label htmlFor="drive-sim" className="font-medium text-slate">
                 Reduce Driving
               </label>
-              <span className="font-bold text-ink">-{driveReduction} miles / week</span>
+              <span className="font-bold text-ink">-{driveReduction} km / week</span>
             </div>
             <input
               id="drive-sim"
@@ -104,7 +104,7 @@ export default function Simulator() {
               className="w-full h-2 bg-hairline-strong rounded-lg appearance-none cursor-pointer accent-primary"
             />
             <p className="text-[11px] text-slate">
-              Current weekly driving: {formData.carMiles} miles ({formData.carType === 'gas' ? 'Gasoline' : 'EV'}). Replaces trips with walking, cycling, or public transport.
+              Current weekly driving: {formData.carMiles} km ({formData.carType === 'gas' ? 'Gasoline' : 'EV'}). Replaces trips with walking, cycling, or public transport.
             </p>
           </div>
         ) : (
@@ -243,17 +243,17 @@ export default function Simulator() {
             </div>
           </div>
 
-          {/* Mile equivalents */}
+          {/* km equivalents */}
           <div className="flex items-center gap-4">
             <div className="size-12 rounded-full bg-orange-50 border border-orange-200 flex items-center justify-center">
               <Car className="size-6 text-orange-700" />
             </div>
             <div>
               <div className="text-xl font-display font-semibold text-ink">
-                {gasMilesEquivalent.toLocaleString()} Miles
+                {gasKmEquivalent.toLocaleString()} km
               </div>
               <p className="text-xs text-slate mt-0.5">
-                Avoids the emissions of driving {gasMilesEquivalent.toLocaleString()} miles in an average gasoline car.
+                Avoids the emissions of driving {gasKmEquivalent.toLocaleString()} km in an average gasoline car.
               </p>
             </div>
           </div>

@@ -19,7 +19,7 @@ const ADVICE_DB = {
     ],
   },
   energy: [
-    "Your home energy bill (${val}/mo) is a primary driver of your score. Lowering your thermostat by 2°F in winter and raising it by 2°F in summer can save around 200 kg CO₂/year.",
+    "Your home energy bill (₹{val}/mo) is a primary driver of your score. Lowering your thermostat by 2°C in winter and raising it by 2°C in summer can save around 200 kg CO₂/year.",
     "Upgrading your standard appliances to Energy Star certified models can trim home energy emissions by 150 kg CO₂ annually.",
     "Unplugging electronics on standby ('phantom load') can save up to 45 kg CO₂/year."
   ],
@@ -38,7 +38,7 @@ const ADVICE_DB = {
     ]
   },
   shopping: [
-    "Your monthly spending on clothes (${val}) generates production emissions. Shopping secondhand or buying durable clothes that last 3+ years reduces clothing carbon footprints by 60%.",
+    "Your monthly spending on clothes (₹{val}) generates production emissions. Shopping secondhand or buying durable clothes that last 3+ years reduces clothing carbon footprints by 60%.",
     "Reduce electronics turnover: keeping your smartphone and laptop for 4 years instead of 2 years halves their lifetime manufacturing footprint, saving up to 180 kg CO₂."
   ],
   waste: [
@@ -187,10 +187,10 @@ export default function Coach() {
     }
 
     if (q.includes('energy') || q.includes('electric') || q.includes('ac') || q.includes('appliance') || q.includes('utility')) {
-      return `Your monthly electric bill is $${formData.electricBill} and you use Air Conditioning for ${formData.acHours} hours daily. To reduce this: 
-      1. Turn off AC when not in the room. Setting AC to 78°F instead of 72°F saves 10% on energy.
-      2. Switch appliances to Energy Star certified options (saving up to 150 kg CO₂/year).
-      3. Unplug standby electronics to avoid 'phantom energy load'.`;
+      return `Your monthly electric bill is ₹${formData.electricBill} and you use Air Conditioning for ${formData.acHours} hours daily. To reduce this: 
+       1. Turn off AC when not in the room. Setting AC to 26°C instead of 22°C saves 10% on energy.
+       2. Switch appliances to Energy Star certified options (saving up to 150 kg CO₂/year).
+       3. Unplug standby electronics to avoid 'phantom energy load'.`;
     }
 
     if (q.includes('food') || q.includes('diet') || q.includes('eat') || q.includes('meat') || q.includes('vegan') || q.includes('vegetarian')) {
@@ -247,11 +247,11 @@ export default function Coach() {
           const model = ai.getGenerativeModel({ model: 'gemini-1.5-flash' });
           const prompt = `You are an expert AI Sustainability Coach. The user has a carbon score of ${score}/100 (annual emissions: ${totalCO2} kg CO2e).
           Their footprint breakdown: Transportation: ${breakdown.transport} kg, Home Energy: ${breakdown.energy} kg, Food: ${breakdown.food} kg, Shopping: ${breakdown.shopping} kg, Waste: ${breakdown.waste} kg.
-          Their inputs: Vehicle: ${formData.carType} (${formData.carMiles} miles/week), public transit: ${formData.publicTransitMiles} miles/week, air travel: ${formData.flightHours} hours/year.
-          Home electric bill: $${formData.electricBill}/month, AC hours: ${formData.acHours} hours/day.
-          Diet: ${formData.dietType}, organic food: ${formData.organicRatio}%.
-          Monthly shopping spends: Clothes: $${formData.clothingSpend}, Electronics: $${formData.electronicsSpend}, Goods: $${formData.consumerGoodsSpend}.
-          Waste recycling: ${formData.recyclingHabit}, single-use plastics: ${formData.plasticUsage}.
+           Their inputs: Vehicle: ${formData.carType} (${formData.carMiles} miles/week), public transit: ${formData.publicTransitMiles} miles/week, air travel: ${formData.flightHours} hours/year.
+           Home electric bill: ₹${formData.electricBill}/month, AC hours: ${formData.acHours} hours/day.
+           Diet: ${formData.dietType}, organic food: ${formData.organicRatio}%.
+           Monthly shopping spends: Clothes: ₹${formData.clothingSpend}, Electronics: ₹${formData.electronicsSpend}, Goods: ₹${formData.consumerGoodsSpend}.
+           Waste recycling: ${formData.recyclingHabit}, single-use plastics: ${formData.plasticUsage}.
           
           User asks: "${userMsg.text}". Provide a brief, supportive, and highly quantitative response, outlining carbon reductions.`;
           

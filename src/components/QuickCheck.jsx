@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-// Emission factors in kg CO2 per mile (approximations)
+// Emission factors in kg CO2 per km (approximations)
 const EMISSION_FACTORS = {
-  gasCar: 0.404,     // Average gasoline passenger car
-  electricCar: 0.110, // Electric car (grid-average)
-  bus: 0.140,        // Average transit bus per passenger
-  train: 0.058,      // Average passenger train per passenger
+  gasCar: 0.251,     // Average gasoline passenger car
+  electricCar: 0.068, // Electric car (grid-average)
+  bus: 0.087,        // Average transit bus per passenger
+  train: 0.036,      // Average passenger train per passenger
   bicycle: 0,        // Walk/Bicycle
 };
 
@@ -18,7 +18,7 @@ const TRANSPORT_NAMES = {
 };
 
 export default function QuickCheck() {
-  const [distance, setDistance] = useState(50); // Weekly distance in miles
+  const [distance, setDistance] = useState(80); // Weekly distance in km
   const [transport, setTransport] = useState('gasCar');
 
   const calculateEmissions = (mode, dist) => {
@@ -61,13 +61,13 @@ export default function QuickCheck() {
             <label htmlFor="quick-distance" className="font-medium text-slate">
               Weekly Commute Distance
             </label>
-            <span className="font-bold text-ink">{distance} miles</span>
+            <span className="font-bold text-ink">{distance} km</span>
           </div>
           <input
             id="quick-distance"
             type="range"
             min="0"
-            max="300"
+            max="500"
             value={distance}
             onChange={(e) => setDistance(parseInt(e.target.value) || 0)}
             className="w-full h-2 bg-hairline-strong rounded-lg appearance-none cursor-pointer accent-primary"

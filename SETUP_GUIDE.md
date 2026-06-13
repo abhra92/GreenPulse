@@ -43,7 +43,7 @@ Before you begin, ensure you have:
 ### 2.1 Get Repository URL
 1. After creating the repository, you'll be taken to the repository page
 2. Click the green "Code" button
-3. Copy the HTTPS URL (e.g., `https://github.com/your-username/greenpulse-ai.git`)
+3. Copy the HTTPS URL (e.g., `https://github.com/abhra92/GreenPulse.git`)
 
 ### 2.2 Clone the Repository
 Open your terminal/command prompt and run:
@@ -53,10 +53,10 @@ Open your terminal/command prompt and run:
 cd /path/to/your/projects
 
 # Clone the repository
-git clone https://github.com/your-username/greenpulse-ai.git
+git clone https://github.com/abhra92/GreenPulse.git
 
 # Change into the repository directory
-cd greenpulse-ai
+cd GreenPulse
 ```
 
 ## Step 3: Set Up Local Repository
@@ -66,10 +66,10 @@ Set up your Git user credentials:
 
 ```bash
 # Set your user name
-git config user.name "Your Name"
+git config user.name "abhra92"
 
 # Set your user email
-git config user.email "your.email@example.com"
+git config user.email "abhrajoytidhara92@gmail.com"
 
 # Verify configuration
 git config --list | grep user.
@@ -80,7 +80,7 @@ Add the GitHub repository as the remote origin:
 
 ```bash
 # Add the remote origin (replace with your actual URL)
-git remote add origin https://github.com/your-username/greenpulse-ai.git
+git remote add origin https://github.com/abhra92/GreenPulse.git
 
 # Verify the remote
 git remote -v
@@ -180,7 +180,7 @@ git push origin master
 
 ### 8.1 Size Requirements
 - Repository size should be less than 10 MB
-- Check size at: https://github.com/your-username/greenpulse-ai/settings/basics
+- Check size at: https://github.com/abhra92/GreenPulse/settings/basics
 
 ### 8.2 Branch Requirements
 - Only one branch (main/master)
@@ -255,7 +255,7 @@ del greenpulse-ai (Windows)
 rmdir greenpulse-ai (macOS/Linux)
 
 # Try cloning again
-git clone https://github.com/your-username/greenpulse-ai.git
+git clone https://github.com/abhra92/GreenPulse.git
 ```
 
 #### Authentication Errors
@@ -308,4 +308,4 @@ Your repository should meet all challenge requirements:
 - [ ] Proper Git history
 - [ ] All features implemented
 
-Good luck with your GreePlus AI project! 🎉
+Good luck with your GreePlus AI project! 

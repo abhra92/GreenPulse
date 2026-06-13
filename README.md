@@ -1,5 +1,7 @@
 # GreePlus AI – AI-Powered Carbon Footprint Awareness Platform
 
+**Live Platform:** [https://greenpulse-398484959293.us-central1.run.app/](https://greenpulse-398484959293.us-central1.run.app/)
+
 ## Project Vision
 
 GreePlus AI helps individuals understand, monitor, and reduce their environmental impact through personalized carbon footprint analysis, AI-generated sustainability guidance, behavioral tracking, and gamified engagement.
@@ -204,7 +206,8 @@ AI Sustainability Recommendation Engine
 
 ### Deployment
 
-* Vercel
+* Google Cloud Run (Fully Managed Serverless Container Platform)
+
 
 ### Development Tools
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Trophy } from 'lucide-react';
 
 const FRIENDS_DATA = [
   { rank: 1, name: 'Sarah Jenkins', score: 94, level: 'Eco Champion', xp: 2450, isUser: false },
@@ -119,10 +120,12 @@ export default function Leaderboard() {
                     }`}
                   >
                     <td className="py-4 px-6 text-center">
-                      {friend.rank === 1 && '🥇'}
-                      {friend.rank === 2 && '🥈'}
-                      {friend.rank === 3 && '🥉'}
-                      {friend.rank > 3 && friend.rank}
+                      <div className="flex items-center justify-center">
+                        {friend.rank === 1 && <Trophy className="size-5 text-yellow-500" />}
+                        {friend.rank === 2 && <Trophy className="size-5 text-slate-400" />}
+                        {friend.rank === 3 && <Trophy className="size-5 text-amber-600" />}
+                        {friend.rank > 3 && friend.rank}
+                      </div>
                     </td>
                     <td className="py-4 px-6">
                       <div className="flex items-center gap-2">

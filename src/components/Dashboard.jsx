@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Flame, Trees, GlassWater, Shield } from 'lucide-react';
 
 // National averages in kg CO2/year for benchmark comparison
 const BENCHMARKS = {
@@ -34,8 +35,8 @@ export default function Dashboard() {
   if (!results) {
     return (
       <div className="mx-auto max-w-2xl rounded-lg border border-beige-deep bg-cream p-12 text-center flex flex-col items-center gap-6">
-        <div class="size-16 rounded-md bg-canvas border border-beige-deep flex items-center justify-center text-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+        <div className="size-16 rounded-md bg-canvas border border-beige-deep flex items-center justify-center text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="size-8"><path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
         </div>
         <h2 className="font-display text-3xl font-normal text-ink">No footprint assessment found</h2>
         <p className="text-slate max-w-md">
@@ -67,10 +68,10 @@ export default function Dashboard() {
 
   // Badges lists
   const badges = [
-    { id: 'streak-7', name: '7-Day Streak', icon: '🔥', desc: 'Maintained eco habits for 7 consecutive days', unlocked: streak >= 7 },
-    { id: 'tree-planter', name: 'Tree Planter', icon: '🌳', desc: 'Reduced footprint by equivalent of 1 tree', unlocked: true },
-    { id: 'plastic-free', name: 'Plastic-Free Week', icon: '🥤', desc: 'Selected low plastic usage in waste parameters', unlocked: results.formData.plasticUsage === 'low' },
-    { id: 'eco-champion', name: 'Eco Warrior', icon: '🛡️', desc: 'Achieved a carbon score above 80', unlocked: score >= 80 },
+    { id: 'streak-7', name: '7-Day Streak', icon: Flame, desc: 'Maintained eco habits for 7 consecutive days', unlocked: streak >= 7 },
+    { id: 'tree-planter', name: 'Tree Planter', icon: Trees, desc: 'Reduced footprint by equivalent of 1 tree', unlocked: true },
+    { id: 'plastic-free', name: 'Plastic-Free Week', icon: GlassWater, desc: 'Selected low plastic usage in waste parameters', unlocked: results.formData.plasticUsage === 'low' },
+    { id: 'eco-champion', name: 'Eco Warrior', icon: Shield, desc: 'Achieved a carbon score above 80', unlocked: score >= 80 },
   ];
 
   return (
@@ -158,7 +159,7 @@ export default function Dashboard() {
                 <h4 className="text-2xl font-sans font-bold text-ink">{level}</h4>
               </div>
               <div className="flex items-center gap-1.5 bg-canvas px-3 py-1 rounded-full border border-beige-deep">
-                <span className="text-lg">🔥</span>
+                <Flame className="size-4 text-primary" />
                 <span className="text-sm font-bold text-primary">{streak} Day Streak</span>
               </div>
             </div>
@@ -178,9 +179,9 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div class="flex gap-2 mt-6 border-t border-beige-deep pt-4">
-            <span class="text-xs text-slate font-medium">Next Milestone:</span>
-            <span class="text-xs text-ink font-semibold">Eco Warrior at 1000 XP</span>
+          <div className="flex gap-2 mt-6 border-t border-beige-deep pt-4">
+            <span className="text-xs text-slate font-medium">Next Milestone:</span>
+            <span className="text-xs text-ink font-semibold">Eco Warrior at 1000 XP</span>
           </div>
         </div>
 
@@ -252,21 +253,24 @@ export default function Dashboard() {
             </h3>
             
             <div className="grid grid-cols-2 gap-4">
-              {badges.map((badge) => (
-                <div 
-                  key={badge.id}
-                  className={`border rounded-lg p-3 text-center flex flex-col items-center justify-center gap-2 transition-all ${
-                    badge.unlocked 
-                      ? 'border-beige-deep bg-cream-light opacity-100' 
-                      : 'border-hairline bg-surface opacity-45'
-                  }`}
-                  title={badge.desc}
-                >
-                  <span className="text-3xl">{badge.icon}</span>
-                  <span className="text-xs font-semibold text-ink line-clamp-1">{badge.name}</span>
-                  <span className="text-[10px] text-slate line-clamp-2 leading-tight">{badge.desc}</span>
-                </div>
-              ))}
+              {badges.map((badge) => {
+                const BadgeIcon = badge.icon;
+                return (
+                  <div 
+                    key={badge.id}
+                    className={`border rounded-lg p-3 text-center flex flex-col items-center justify-center gap-2 transition-all ${
+                      badge.unlocked 
+                        ? 'border-beige-deep bg-cream-light opacity-100' 
+                        : 'border-hairline bg-surface opacity-45'
+                    }`}
+                    title={badge.desc}
+                  >
+                    <BadgeIcon className={`size-8 ${badge.unlocked ? 'text-primary' : 'text-stone'}`} />
+                    <span className="text-xs font-semibold text-ink line-clamp-1">{badge.name}</span>
+                    <span className="text-[10px] text-slate line-clamp-2 leading-tight">{badge.desc}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -276,7 +280,7 @@ export default function Dashboard() {
               className="text-xs font-semibold text-primary hover:underline flex items-center justify-center gap-1"
             >
               Complete eco challenges to earn more
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-3"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="size-3"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
             </a>
           </div>
         </div>

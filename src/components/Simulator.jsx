@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Trees, Car } from 'lucide-react';
 
 export default function Simulator() {
   const [results, setResults] = useState(null);
@@ -20,7 +21,7 @@ export default function Simulator() {
     return (
       <div className="mx-auto max-w-2xl rounded-lg border border-beige-deep bg-cream p-12 text-center flex flex-col items-center gap-6">
         <div className="size-16 rounded-md bg-canvas border border-beige-deep flex items-center justify-center text-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" className="size-8"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="size-8"><path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" /></svg>
         </div>
         <h2 className="font-display text-3xl font-normal text-ink">Assessment needed for simulator</h2>
         <p className="text-slate max-w-md">
@@ -108,7 +109,7 @@ export default function Simulator() {
           </div>
         ) : (
           <div className="text-xs text-slate bg-surface p-4 border border-hairline-soft rounded-md">
-            🚗 Personal driving cannot be reduced (you specified 'No Personal Vehicle' in your assessment).
+            Personal driving cannot be reduced (you specified 'No Personal Vehicle' in your assessment).
           </div>
         )}
 
@@ -158,7 +159,7 @@ export default function Simulator() {
           </div>
         ) : (
           <div className="text-xs text-slate bg-surface p-4 border border-hairline-soft rounded-md">
-            ❄️ AC hours cannot be reduced (you specified 0 AC hours daily in your assessment).
+            AC hours cannot be reduced (you specified 0 AC hours daily in your assessment).
           </div>
         )}
 
@@ -229,8 +230,8 @@ export default function Simulator() {
 
           {/* Tree equivalents */}
           <div className="flex items-center gap-4">
-            <div className="size-12 rounded-full bg-green-50 border border-green-200 flex items-center justify-center text-2xl">
-              🌳
+            <div className="size-12 rounded-full bg-green-50 border border-green-200 flex items-center justify-center">
+              <Trees className="size-6 text-green-700" />
             </div>
             <div>
               <div className="text-xl font-display font-semibold text-ink">
@@ -244,8 +245,8 @@ export default function Simulator() {
 
           {/* Mile equivalents */}
           <div className="flex items-center gap-4">
-            <div className="size-12 rounded-full bg-orange-50 border border-orange-200 flex items-center justify-center text-2xl">
-              🚗
+            <div className="size-12 rounded-full bg-orange-50 border border-orange-200 flex items-center justify-center">
+              <Car className="size-6 text-orange-700" />
             </div>
             <div>
               <div className="text-xl font-display font-semibold text-ink">

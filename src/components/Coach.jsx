@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { Bot } from 'lucide-react';
 
 // Rule-based sustainability advice database for local fallback
 const ADVICE_DB = {
@@ -285,8 +286,8 @@ export default function Coach() {
         {/* Chat Header */}
         <div className="px-6 py-4 border-b border-hairline-soft flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="size-10 rounded-full bg-cream border border-beige-deep flex items-center justify-center text-primary font-bold">
-              🤖
+            <div className="size-10 rounded-full bg-cream border border-beige-deep flex items-center justify-center text-primary">
+              <Bot className="size-5 text-primary" />
             </div>
             <div>
               <h3 className="font-semibold text-ink text-sm">Gemini AI Coach</h3>
